@@ -23,16 +23,24 @@ function divide (num1, num2) {
 function operate (operator, num1, num2) {
     switch (operator) {
         case "+":
+            currentValue = add(+num1, +num2)
             return currentDisplay.textContent = add(+num1, +num2)
             
         case "-":
+            currentValue = subtract(num1, num2)
             return currentDisplay.textContent = subtract(num1, num2)
             
         case "*":
+            currentValue = multiply(num1, num2)
             return currentDisplay.textContent = multiply(num1, num2)
             
         case "÷":
-            return currentDisplay.textContent = divide(num1, num2)
+            if (num2 == 0) {
+                return currentDisplay.textContent = "Math error"
+            } else {
+                currentValue = divide(num1, num2)
+                return currentDisplay.textContent = divide(num1, num2)
+            }
             
     }
 }
@@ -50,9 +58,8 @@ let num2 = ''
 
 numbers.forEach(button => {
     button.addEventListener('click', function () {
-        currentValue += `${button.value}`
         currentDisplay.textContent += `${button.value}`
-        
+        currentValue += `${button.value}`
     })
 })
 
@@ -72,4 +79,5 @@ clear.addEventListener('click', function () {
 equals.addEventListener('click', function () {
     num2 = currentValue
     operate(currentOp, num1, num2)
+    currentOp = ''
 })

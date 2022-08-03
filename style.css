@@ -1,5 +1,6 @@
 .flexContainer {
     background-color: #6a5866;
+    border: 3px solid purple;
     margin: auto;
     width: max-content;
     max-width: 400px;
@@ -12,6 +13,8 @@
     align-items: flex-end;
     width: 100%;
     height: 120px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
     background-color: #635f62;
     color: white;
 }
