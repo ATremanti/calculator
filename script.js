@@ -49,6 +49,8 @@ function clearDisplay () {
     currentDisplay.textContent = ''
     currentValue = ''
     currentOp = ''
+    num1 = ''
+    num2 = ''
 }
 
 let currentValue = ''
@@ -58,17 +60,32 @@ let num2 = ''
 
 numbers.forEach(button => {
     button.addEventListener('click', function () {
-        currentDisplay.textContent += `${button.value}`
-        currentValue += `${button.value}`
+        if (currentOp !== '') {          
+            currentDisplay.textContent += `${button.value}`
+            currentValue += `${button.value}`
+            num2 = currentValue
+        } else {
+            currentDisplay.textContent += `${button.value}`
+            currentValue += `${button.value}`
+            num1 = currentValue
+        }
     })
 })
 
 operators.forEach(button => {
     button.addEventListener('click', function () {
-        num1 = currentValue
-        currentDisplay.textContent += ` ${button.value} `
-        currentOp = button.value
-        currentValue = ''
+        if (currentOp !== '') {
+            operate(currentOp, num1, num2)
+            currentOp = button.value
+            currentDisplay.textContent += ` ${button.value} `
+            num1 = currentValue
+            currentValue = ''
+            num2 = ''
+        } else {
+            currentOp = button.value
+            currentDisplay.textContent += ` ${button.value} `
+            currentValue = ''
+        }
     })
 })
 
@@ -77,7 +94,8 @@ clear.addEventListener('click', function () {
 })
 
 equals.addEventListener('click', function () {
-    num2 = currentValue
     operate(currentOp, num1, num2)
     currentOp = ''
+    num1 = currentValue
+    num2 = ''
 })

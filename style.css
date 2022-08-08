@@ -1,7 +1,13 @@
+body {
+    background-color: #635f62;
+}
+
 .flexContainer {
+    display: flex;
+    flex-direction: column;
     background-color: #6a5866;
-    border: 3px solid purple;
-    margin: auto;
+    border: 3px solid black;
+    margin: 5% auto;
     width: max-content;
     max-width: 400px;
 }
@@ -15,8 +21,8 @@
     height: 120px;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-    background-color: #635f62;
-    color: white;
+    background-color: lightgray;
+    color: black;
 }
 
 .current-value {
@@ -44,7 +50,7 @@ button {
     border: none;
     border: 0.5px solid #6a5866;
     border-radius: 12px;
-    color: white;
+    color: whitesmoke;
 }
 
 button:hover {
@@ -61,4 +67,12 @@ button:hover {
 
 .btn-equal, .empty, .flexContainer {
     border-radius: 12px;
+}
+
+.footer {
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
