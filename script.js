@@ -3,6 +3,7 @@ const currentDisplay = document.querySelector('.current-value')
 const clear = document.querySelector('.btn-clear')
 const operators = document.querySelectorAll('.btn-op')
 const equals = document.querySelector('.btn-equal')
+const dot = document.querySelector('.btn-dot')
 
 function add (num1, num2) {
     return num1 + num2
@@ -46,6 +47,7 @@ function operate (operator, num1, num2) {
 }
 
 function clearDisplay () {
+    dot.disabled = false
     currentDisplay.textContent = ''
     currentValue = ''
     currentOp = ''
@@ -74,6 +76,7 @@ numbers.forEach(button => {
 
 operators.forEach(button => {
     button.addEventListener('click', function () {
+        dot.disabled = false
         if (currentOp !== '') {
             operate(currentOp, num1, num2)
             currentOp = button.value
@@ -98,4 +101,20 @@ equals.addEventListener('click', function () {
     currentOp = ''
     num1 = currentValue
     num2 = ''
+})
+
+dot.addEventListener('click', function () {
+    if (currentOp === '') {
+        if (!num1.includes('.')) {
+            currentDisplay.textContent += '.'
+            currentValue += '.'
+            dot.disabled = true
+        }
+    } else {
+        if (!num2.includes('.')) {
+            currentDisplay.textContent += '.'
+            currentValue += '.'
+            dot.disabled = true
+        }
+    }
 })
