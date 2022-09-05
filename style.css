@@ -5,6 +5,8 @@ body {
 .flexContainer {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    word-break: break-all;
     background-color: #6a5866;
     border: 3px solid black;
     margin: 5% auto;
@@ -14,10 +16,9 @@ body {
 
 .display {
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
     justify-content: space-around;
     align-items: flex-end;
-    flex-wrap: wrap;
     min-width: 100%;
     min-height: 120px;
     border-top-left-radius: 12px;
@@ -71,9 +72,9 @@ button:hover {
 }
 
 .footer {
-    color: black;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 8px;
 }
