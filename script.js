@@ -57,6 +57,7 @@ function clearDisplay () {
 
 let currentValue = ''
 let currentOp = ''
+let lastOp = ''
 let num1 = ''
 let num2 = ''
 
@@ -66,6 +67,12 @@ numbers.forEach(button => {
             currentDisplay.textContent += `${button.value}`
             currentValue += `${button.value}`
             num2 = currentValue
+        } else if (lastOp === '=') {
+            lastOp = ''
+            clearDisplay()
+            currentDisplay.textContent += `${button.value}`
+            currentValue += `${button.value}`
+            num1 = currentValue
         } else {
             currentDisplay.textContent += `${button.value}`
             currentValue += `${button.value}`
@@ -99,16 +106,19 @@ clear.addEventListener('click', function () {
 equals.addEventListener('click', function () {
     operate(currentOp, num1, num2)
     currentOp = ''
+    lastOp = '='
     num1 = currentValue
     num2 = ''
+    dot.disabled = false
 })
 
 dot.addEventListener('click', function () {
     if (currentOp === '') {
-        if (!num1.includes('.')) {
+        if (!num1.toString().includes('.')) {
             currentDisplay.textContent += '.'
             currentValue += '.'
             dot.disabled = true
+            lastOp = ''
         }
     } else {
         if (!num2.includes('.')) {
